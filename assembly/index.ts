@@ -1,19 +1,33 @@
-import { console } from './Console/Console'
+import { console } from './Modules/Console'
+// ✅
+import { fs } from './Modules/FS'
+// ✅
+import { WebSocket } from './Modules/WebSocket'
+// ❌
+import { UDPSocket } from './Modules/UDP'
 
-import { fs } from './FS/FS'
+import { http } from './Modules/HTTP'
 
-import { WebSocket } from './WebSocket/WebSocket'
+import { EventEmitter } from './Modules/EventEmitter'
 
-import { UDPSocket } from './UDP/UDP'
-
-import { http } from './http/HTTP'
+import { ChildProcess } from './Modules/ChildProcess'
 
 export function test(): void {
 
-    http.get('http://localhost:3000/', (body) => {
-
-        console.log('Body: ' + body)
-
+    const socket = new UDPSocket('udp4')
+    
+    socket.on('message', (data) => {
+    
+        console.log('Message: ' + data)
+    
     })
+    
+    socket.on('listening', () => {
+    
+        console.log('Listening')
+    
+    })
+    
+    socket.send('Hello From AssemblyScript!', 3000, 'localhost')
     
 }

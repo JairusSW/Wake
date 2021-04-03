@@ -3,15 +3,18 @@
 
 ## About
 
-WAKE is a set of bindings to NodeJS modules such as FileSystem, UDP, WebSocket, Console, and more. We try to bring as much of the NodeJS features to AssemblyScript and make them as fast as possible. This includes networking, filesystems, databases, and more. 🚀
+WAKE is a set of bindings to NodeJS modules such as FileSystem, UDP, WebSocket, Console, and more. We try to bring as much of the NodeJS features and modules to AssemblyScript and make them as fast as possible. 🚀
 
 ## Features
-- FileSystem Access 📃
-- Supports Networking 📡
-- Access the console 📝
-- Streams support 💧
-- Http get/post/delete 📨
-- UDP Sockets 📻
+- ✅ FileSystem Access 💾
+- ✅ Supports Networking ⚡
+- ✅ Access the console 💬
+- ❌ Streams support 💧
+- ✅ Http client 📨
+- ✅ UDP Sockets 🌠
+- ❌ Worker Support 🔥
+- ✅ Child Process 🌓
+- ✅ Console Access 📝
 
 ## Installation
 

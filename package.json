@@ -1,23 +1,4 @@
 {
-  "scripts": {
-    "asbuild:untouched": "asc assembly/index.ts --target debug --exportTable --exportRuntime",
-    "asbuild:optimized": "asc assembly/index.ts --target release --exportTable --exportRuntime",
-    "asbuild": "npm run asbuild:untouched && npm run asbuild:optimized",
-    "test": "node tests"
-  },
-  "dependencies": {
-    "@assemblyscript/loader": "^0.18.19",
-    "audio-generator": "^2.1.2",
-    "audio-speaker": "^1.5.1",
-    "cross-fetch": "^3.0.6",
-    "fastify": "^3.14.1",
-    "get-stream": "^6.0.0",
-    "into-stream": "^6.0.0",
-    "mic-stream": "^1.0.2",
-    "node-mic-record": "^0.0.1",
-    "rezidb": "^1.0.1",
-    "ws": "^7.4.4"
-  },
   "name": "wake",
   "version": "1.0.0",
   "description": "WAKE bindings for AssemblyScript",
@@ -45,7 +26,21 @@
     "url": "https://github.com/JairusSW/Wake/issues"
   },
   "homepage": "https://github.com/JairusSW/Wake#readme",
+  "scripts": {
+    "asbuild:untouched": "asc assembly/index.ts --target debug --exportTable --exportRuntime",
+    "asbuild:optimized": "asc assembly/index.ts --target release --exportTable --exportRuntime",
+    "asbuild": "npm run asbuild:untouched && npm run asbuild:optimized",
+    "test": "node tests"
+  },
+  "dependencies": {
+    "@assemblyscript/loader": "0.18.19",
+    "cross-fetch": "^3.0.6",
+    "get-stream": "^6.0.0",
+    "into-stream": "^6.0.0",
+    "rezidb": "^1.0.1",
+    "ws": "^7.4.4"
+  },
   "devDependencies": {
-    "assemblyscript": "^0.18.19"
+    "assemblyscript": "0.18.19"
   }
 }

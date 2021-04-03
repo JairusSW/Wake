@@ -1,5 +1,5 @@
 // TODO: Transfer Full API
-import { EventEmitter } from '../EventEmitter/EventEmitter'
+import { EventEmitter } from './EventEmitter'
 
 export class ReadableStream extends EventEmitter {
   constructor() {
