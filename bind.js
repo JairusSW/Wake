@@ -196,7 +196,7 @@ class WakeImport {
         
                     if (!UDPsockets[id]) return
             
-                    UDPsockets[id]['pointers'][wasmModule.exports.__getString(event).toLowerCase().trim()] = wasmModule.exports.table.get(pointer)
+                    UDPsockets[id]['pointers'][this._exports.__getString(event).toLowerCase().trim()] = this._exports.table.get(pointer)
             
                 },
                 initUDP: (type) => {
@@ -218,7 +218,7 @@ class WakeImport {
             
                     socket.socket.on('message', (data, info) => {
         
-                        const messagePtr = wasmModule.exports.__newString(data.toString('utf8'))
+                        const messagePtr = this._exports.__newString(data.toString('utf8'))
             
                         const func = socket.pointers['message']
             
@@ -269,7 +269,7 @@ class WakeImport {
                 },
                 sendUDP: (id, message, port, address) => {
             
-                    UDPsockets[id]['socket'].send(Buffer.from(wasmModule.exports.__getArray(message)), port, wasmModule.exports.__getString(address))
+                    UDPsockets[id]['socket'].send(Buffer.from(this._exports.__getArray(message)), port, this._exports.__getString(address))
             
                     return
             
@@ -281,7 +281,7 @@ class WakeImport {
                 },
                 bindUDP: (id, port, address) => {
             
-                    UDPsockets[id]['socket'].bind(port, wasmModule.exports.__getString(address))
+                    UDPsockets[id]['socket'].bind(port, this._exports.__getString(address))
             
                 }
             }
