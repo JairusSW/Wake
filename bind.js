@@ -8,6 +8,8 @@ let UDPsockets = []
 
 const dgram = require('dgram');
 
+const ChildProcess = require('child_process')
+
 class WakeImport {
     
     constructor() {
@@ -284,6 +286,16 @@ class WakeImport {
                     UDPsockets[id]['socket'].bind(port, this._exports.__getString(address))
             
                 }
+            },
+            ChildProcess: {
+                ExecSync: (command) => {
+                    return this._exports.__newString(ChildProcess.execSync(this._exports.__getString(command)).toString())
+                },
+                Exec: (command, pointer) => {
+                    ChildProcess.exec(this._exports.__getString(command), (error, stdout, stderr) => {
+                        this._exports.table.get(pointer)(this._exports.__newString(stdout))
+                    })
+                }
             }
         }
     }
@@ -304,7 +316,7 @@ class WakeImport {
 			throw new Error(
 				'Make sure you set .wasmExports after instantiating the Wasm module but before running the Wasm module.',
 			)
-		return this.table.get(fnIndex)
+		return this._exports.table.get(fnIndex)
 	}
 }
 

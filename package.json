@@ -2,7 +2,9 @@
   "name": "wake",
   "version": "1.0.0",
   "description": "WAKE bindings for AssemblyScript",
-  "main": "index.js",
+  "main": "bind.js",
+  "types": "./assembly/main.ts",
+  "ascMain": "./assembly/main.ts",
   "directories": {
     "test": "tests"
   },

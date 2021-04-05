@@ -6,16 +6,16 @@
 WAKE is a set of bindings to NodeJS modules such as FileSystem, UDP, WebSocket, Console, and more. We try to bring as much of the NodeJS features and modules to AssemblyScript and make them as fast as possible. 🚀
 
 ## Features
-- ✅ FileSystem Access 💾
-- ✅ Supports Networking ⚡
-- ✅ Access the console 💬
-- ❌ Streams support 💧
-- ✅ Http client 📨
-- ✅ UDP Sockets 🌠
-- ❌ Worker Support 🔥
-- ✅ Child Process 🌓
-- ✅ Console Access 📝
-
+- FileSystem Access 💾
+- Supports Networking ⚡
+- Access the console 💬
+- Streams support 💧
+- Http client 📨
+- UDP Sockets 🌠
+- Worker Support 🔥
+- Child Process 🌓
+- Console Access 📝
+- EventEmitters 🍻
 ## Installation
 
 ```bash
@@ -24,62 +24,94 @@ WAKE is a set of bindings to NodeJS modules such as FileSystem, UDP, WebSocket, 
 
 ## Usage
 
-I'll write this later!
+### Console
 
-## TODO
+```js
 
-Please add your lists! 😉
+import { console } from 'as-wake'
 
-### IDEAS
+console.log('Hello from AssemblyScript! 🚀')
 
-- LevelDB/RocksDB (ReziDB could be a nice option)
+console.warn('WARN: Wake is amazing! 🌊')
 
-- Add Some Sqlite3 (bettter-sqlite3) bindings
+```
 
-- Add some HTTP/HTTP2 server... Fastify?
+### FileSystem
 
-- Add a cluster api
+```js
+import { fs, console } from 'as-wake'
 
-### UDP
+fs.writeFileSync('./test.txt', Uint8Array.wrap(String.UTF8.encode('Hello from AssemblyScript! 🚀')))
 
-- Test UDP and add Multicast
-
-### WebSocket
-
-- Fix WebSocket
-
-### Stream
-
-- Import full Streams api
-
-### Worker
-
-- Start project
-
-### HTTP
-
-- Add all protocols
-
-- Add headers and error to callback
-
-### File System
-
-- Import full FS api
+console.log(String.UTF8.decode(fs.readFileSync('./test.txt').buffer))
+```
 
 ### EventEmitter
 
-- Import full api.
+```js
+import { EventEmitter, console } from 'as-wake'
 
-### Date
+const emitter = new EventEmitter()
 
-- Add all functions
+emitter.on('message', (message) => {
 
-### Console
+    console.log('Recieved Message: ' + message)
 
-- Add more functions
+})
 
-### Bitray
+emitter.emit('message', 'Hello from AssemblyScript! 🚀')
+```
 
-- Transfer the code to a full Buffer implementation
+### UDP Socket
 
-## Fill in someting here!
+```js
+import { UDPSocket } from 'as-wake'
+
+const socket = new UDPSocket('udp4')
+
+socket.on('message', (message) => {
+
+    console.log('Recieved Message: ' + message)
+
+})
+
+socket.bind(3000, '0.0.0.0')
+
+socket.send('Hello from AssemblyScript! 🚀', 3000, 'localhost')
+```
+
+### WebSocket
+
+```js
+import { WebSocket } from 'as-wake'
+
+const socket = new WebSocket('wss://echo.websocket.org/')
+
+socket.on('message', (message) => {
+
+    console.log('Recieved Message: ' + message)
+
+})
+
+socket.send('Hello from AssemblyScript! 🚀')
+```
+
+### HTTP
+
+```js
+import { http, console } from 'as-wake'
+
+http.get('https://catfact.ninja/fact', (body) => {
+
+    console.log(body)
+
+})
+```
+
+### ChildProcess
+
+```js
+import { ChildProcess, console } from 'as-wake'
+
+console.log(ChildProcess.execute('node --help'))
+```
