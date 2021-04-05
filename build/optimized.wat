@@ -1,20 +1,17 @@
 (module
  (type $i32_=>_none (func (param i32)))
- (type $i32_i32_=>_none (func (param i32 i32)))
  (type $none_=>_none (func))
+ (type $i32_i32_=>_none (func (param i32 i32)))
  (type $i32_i32_=>_i32 (func (param i32 i32) (result i32)))
  (type $i32_i32_i32_=>_none (func (param i32 i32 i32)))
  (type $i32_=>_i32 (func (param i32) (result i32)))
  (type $i32_i32_i32_i32_=>_none (func (param i32 i32 i32 i32)))
  (type $none_=>_i32 (func (result i32)))
  (import "Console" "consoleLog" (func $assembly/Modules/Console/consoleLog (param i32)))
- (import "ChildProcess" "Exec" (func $assembly/Modules/ChildProcess/Exec (param i32 i32)))
  (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
  (memory $0 1)
- (data (i32.const 1036) ",")
- (data (i32.const 1048) "\01\00\00\00\16\00\00\00n\00o\00d\00e\00 \00-\00-\00h\00e\00l\00p")
- (data (i32.const 1084) "\1c")
- (data (i32.const 1096) "\03\00\00\00\08\00\00\00\01")
+ (data (i32.const 1036) "L")
+ (data (i32.const 1048) "\01\00\00\004\00\00\00H\00e\00l\00l\00o\00 \00F\00r\00o\00m\00 \00A\00s\00s\00e\00m\00b\00l\00y\00S\00c\00r\00i\00p\00t\00!")
  (data (i32.const 1116) "<")
  (data (i32.const 1128) "\01\00\00\00(\00\00\00A\00l\00l\00o\00c\00a\00t\00i\00o\00n\00 \00t\00o\00o\00 \00l\00a\00r\00g\00e")
  (data (i32.const 1180) "<")
@@ -29,9 +26,8 @@
  (data (i32.const 1528) "\01\00\00\00*\00\00\00O\00b\00j\00e\00c\00t\00 \00a\00l\00r\00e\00a\00d\00y\00 \00p\00i\00n\00n\00e\00d")
  (data (i32.const 1580) "<")
  (data (i32.const 1592) "\01\00\00\00(\00\00\00O\00b\00j\00e\00c\00t\00 \00i\00s\00 \00n\00o\00t\00 \00p\00i\00n\00n\00e\00d")
- (data (i32.const 1648) "\04\00\00\00 \00\00\00\00\00\00\00 ")
- (table $0 2 funcref)
- (elem (i32.const 1) $assembly/index/test~anonymous|0)
+ (data (i32.const 1648) "\03\00\00\00 \00\00\00\00\00\00\00 ")
+ (table $0 1 funcref)
  (global $~lib/rt/itcms/total (mut i32) (i32.const 0))
  (global $~lib/rt/itcms/threshold (mut i32) (i32.const 0))
  (global $~lib/rt/itcms/state (mut i32) (i32.const 0))
@@ -43,7 +39,7 @@
  (global $~lib/rt/itcms/fromSpace (mut i32) (i32.const 0))
  (global $~lib/rt/tlsf/ROOT (mut i32) (i32.const 0))
  (global $~lib/rt/__rtti_base i32 (i32.const 1648))
- (global $~lib/memory/__stack_pointer (mut i32) (i32.const 18068))
+ (global $~lib/memory/__stack_pointer (mut i32) (i32.const 18060))
  (export "test" (func $assembly/index/test))
  (export "__new" (func $~lib/rt/itcms/__new))
  (export "__pin" (func $~lib/rt/itcms/__pin))
@@ -53,10 +49,6 @@
  (export "memory" (memory $0))
  (export "table" (table $0))
  (start $~start)
- (func $assembly/index/test~anonymous|0 (param $0 i32)
-  local.get $0
-  call $assembly/Modules/Console/consoleLog
- )
  (func $~lib/rt/itcms/initLazy (param $0 i32) (result i32)
   local.get $0
   local.get $0
@@ -146,7 +138,7 @@
   if
    i32.const 0
    local.get $0
-   i32.const 18068
+   i32.const 18060
    i32.lt_u
    local.get $0
    i32.load offset=8
@@ -829,10 +821,10 @@
   if
    unreachable
   end
-  i32.const 18080
+  i32.const 18064
   i32.const 0
   i32.store
-  i32.const 19648
+  i32.const 19632
   i32.const 0
   i32.store
   loop $for-loop|0
@@ -843,7 +835,7 @@
     local.get $1
     i32.const 2
     i32.shl
-    i32.const 18080
+    i32.const 18064
     i32.add
     i32.const 0
     i32.store offset=4
@@ -861,7 +853,7 @@
       i32.add
       i32.const 2
       i32.shl
-      i32.const 18080
+      i32.const 18064
       i32.add
       i32.const 0
       i32.store offset=96
@@ -879,13 +871,13 @@
     br $for-loop|0
    end
   end
-  i32.const 18080
-  i32.const 19652
+  i32.const 18064
+  i32.const 19636
   memory.size
   i32.const 16
   i32.shl
   call $~lib/rt/tlsf/addMemory
-  i32.const 18080
+  i32.const 18064
   global.set $~lib/rt/tlsf/ROOT
  )
  (func $~lib/rt/itcms/step (result i32)
@@ -964,7 +956,7 @@
       local.set $0
       loop $while-continue|0
        local.get $0
-       i32.const 18068
+       i32.const 18060
        i32.lt_u
        if
         local.get $0
@@ -1054,7 +1046,7 @@
       unreachable
      end
      local.get $0
-     i32.const 18068
+     i32.const 18060
      i32.lt_u
      if
       local.get $0
@@ -1077,7 +1069,7 @@
       i32.const 4
       i32.add
       local.tee $1
-      i32.const 18068
+      i32.const 18060
       i32.ge_u
       if
        global.get $~lib/rt/tlsf/ROOT
@@ -1829,32 +1821,26 @@
  )
  (func $~lib/rt/__visit_members (param $0 i32)
   block $invalid
-   block $~lib/function/Function<%28~lib/string/String%29=>void>
-    block $~lib/arraybuffer/ArrayBufferView
-     block $~lib/string/String
-      block $~lib/arraybuffer/ArrayBuffer
-       local.get $0
-       i32.const 8
-       i32.sub
-       i32.load
-       br_table $~lib/arraybuffer/ArrayBuffer $~lib/string/String $~lib/arraybuffer/ArrayBufferView $~lib/function/Function<%28~lib/string/String%29=>void> $invalid
-      end
-      return
+   block $~lib/arraybuffer/ArrayBufferView
+    block $~lib/string/String
+     block $~lib/arraybuffer/ArrayBuffer
+      local.get $0
+      i32.const 8
+      i32.sub
+      i32.load
+      br_table $~lib/arraybuffer/ArrayBuffer $~lib/string/String $~lib/arraybuffer/ArrayBufferView $invalid
      end
      return
-    end
-    local.get $0
-    i32.load
-    local.tee $0
-    if
-     local.get $0
-     call $~lib/rt/itcms/__visit
     end
     return
    end
    local.get $0
-   i32.load offset=4
-   call $~lib/rt/itcms/__visit
+   i32.load
+   local.tee $0
+   if
+    local.get $0
+    call $~lib/rt/itcms/__visit
+   end
    return
   end
   unreachable
@@ -1863,7 +1849,7 @@
   memory.size
   i32.const 16
   i32.shl
-  i32.const 18068
+  i32.const 18060
   i32.sub
   i32.const 1
   i32.shr_u
@@ -1880,35 +1866,30 @@
  )
  (func $assembly/index/test
   global.get $~lib/memory/__stack_pointer
-  i32.const 8
+  i32.const 4
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 1684
+  i32.const 1676
   i32.lt_s
   if
-   i32.const 18096
-   i32.const 18144
+   i32.const 18080
+   i32.const 18128
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
-  i64.const 0
-  i64.store
+  i32.const 0
+  i32.store
   global.get $~lib/memory/__stack_pointer
   i32.const 1056
   i32.store
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1104
-  i32.store offset=4
   i32.const 1056
-  i32.const 1104
-  i32.load
-  call $assembly/Modules/ChildProcess/Exec
+  call $assembly/Modules/Console/consoleLog
   global.get $~lib/memory/__stack_pointer
-  i32.const 8
+  i32.const 4
   i32.add
   global.set $~lib/memory/__stack_pointer
  )

@@ -1,5 +1,5 @@
 {
-  "name": "wake",
+  "name": "as-wake",
   "version": "1.0.0",
   "description": "WAKE bindings for AssemblyScript",
   "main": "bind.js",
@@ -37,9 +37,6 @@
   "dependencies": {
     "@assemblyscript/loader": "0.18.19",
     "cross-fetch": "^3.0.6",
-    "get-stream": "^6.0.0",
-    "into-stream": "^6.0.0",
-    "rezidb": "^1.0.1",
     "ws": "^7.4.4"
   },
   "devDependencies": {
