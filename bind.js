@@ -89,6 +89,18 @@ class WakeImport {
                     return fs.existsSync(this._exports.__getString(path)) ? 1 : 0
         
                 },
+                fsReadStreamCall: (path, pointer) => {
+
+                    const stream = fs.createReadStream(this._exports.__getString(path))
+
+                    const callback = this._exports.table.get(pointer)
+                    
+                    stream.on('data', (chunk) => {
+
+                        callback(this._exports.__newString(chunk.toString()))
+
+                    })
+                }
             },
             WebSocket: {
                 sendPointer: (id, event, pointer) => {
@@ -295,6 +307,81 @@ class WakeImport {
                     ChildProcess.exec(this._exports.__getString(command), (error, stdout, stderr) => {
                         this._exports.table.get(pointer)(this._exports.__newString(stdout))
                     })
+                }
+            },
+            HTTP: {
+                httpGet: (url, headersString, callbackPointer) => {
+
+                    let stringHeaders = this._exports.__getString(headersString).split(',,,,')
+        
+                    stringHeaders.pop()
+        
+                    let headers = {}
+        
+                    for (let i = 0; i < stringHeaders.length; i++) {
+                        headers[stringHeaders[i]] = stringHeaders[i + 1]
+                        i++
+                    }
+        
+                    let callback = this.getFn(callbackPointer)
+        
+                    crossFetch(this._exports.__getString(url), {
+                        headers: {
+                            ...headers
+                        },
+                        mode: 'no-cors',
+                        method: 'GET'
+                    }).then((fetched) => {
+
+                        fetched.text().then((txt) => {
+
+                            callback('', this._exports.__newString(txt))
+
+                        })
+
+                    }).catch(err => {
+
+                        callback(this._exports.__newString(err.message), '')
+
+                    })
+
+                },
+                httpPost: (url, headersString, data, callbackPointer) => {
+
+                    let stringHeaders = this._exports.__getString(headersString).split(',,,,')
+        
+                    stringHeaders.pop()
+        
+                    let headers = {}
+        
+                    for (let i = 0; i < stringHeaders.length; i++) {
+                        headers[stringHeaders[i]] = stringHeaders[i + 1]
+                        i++
+                    }
+        
+                    let callback = this.getFn(callbackPointer)
+        
+                    crossFetch(this._exports.__getString(url), {
+                        headers: {
+                            ...headers
+                        },
+                        mode: 'no-cors',
+                        method: 'POST',
+                        body: this._exports.__getString(data)
+                    }).then((fetched) => {
+
+                        fetched.text().then((txt) => {
+
+                            callback('', this._exports.__newString(txt))
+
+                        })
+
+                    }).catch(err => {
+
+                        callback(this._exports.__newString(err.message), '')
+
+                    })
+
                 }
             }
         }

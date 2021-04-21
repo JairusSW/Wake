@@ -11,3 +11,5 @@ export { http } from './Modules/http'
 export { UDPSocket } from './Modules/UDP'
 
 export { WebSocket } from './Modules/WebSocket'
+
+export { ReadableStream } from './Modules/Stream'

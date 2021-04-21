@@ -1,7 +1,17 @@
-const ChildProcess = require('child_process')
+const ffmpeg = require('fluent-ffmpeg')
 
-ChildProcess.exec('node --help', (error, stdout, stderr) => {
+const Speaker = require('speaker')
 
-    console.log(stdout)
-    
-})
+const speaker = new Speaker()
+
+const speaker2 = new Speaker()
+
+const fs = require('fs')
+const { Readable } = require('stream')
+
+const file = fs.readFileSync('./audio.mp3')
+const fileStream = fs.createReadStream('./audio.mp3')
+
+const stream = ffmpeg(fileStream).toFormat('s16le').pipe()
+
+stream.pipe(speaker)

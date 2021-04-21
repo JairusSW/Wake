@@ -101,7 +101,9 @@ socket.send('Hello from AssemblyScript! 🚀')
 ```js
 import { http, console } from 'as-wake'
 
-http.get('https://catfact.ninja/fact', (body) => {
+const headers = new Map<string, string>()
+
+http.get('https://catfact.ninja/fact', headers, (body) => {
 
     console.log(body)
 

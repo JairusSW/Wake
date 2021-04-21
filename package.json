@@ -1,6 +1,6 @@
 {
   "name": "as-wake",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "WAKE bindings for AssemblyScript",
   "main": "bind.js",
   "types": "./assembly/main.ts",
@@ -35,11 +35,14 @@
     "test": "node tests"
   },
   "dependencies": {
-    "@assemblyscript/loader": "0.18.19",
+    "@assemblyscript/loader": "0.18.21",
     "cross-fetch": "^3.0.6",
+    "fastify": "^3.14.1",
+    "fluent-ffmpeg": "^2.1.2",
+    "speaker": "^0.5.3",
     "ws": "^7.4.4"
   },
   "devDependencies": {
-    "assemblyscript": "0.18.19"
+    "assemblyscript": "0.18.21"
   }
 }
